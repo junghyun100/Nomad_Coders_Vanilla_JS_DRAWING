@@ -4,6 +4,7 @@ const colors = document.getElementsByClassName("jsColor");
 const range = document.getElementById("jsRange");
 const mode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
+const eraseBtn = document.getElementById("jsErase");
 
 const INITIAL_COLOR = "#2c2c2c"
 const CANVAS_SIZE = 500;
@@ -69,6 +70,11 @@ function handleCanvasClick(){
     }
 }
 
+function handleEraseClick(){
+    ctx.fillStyle= "white";
+    ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+}
+
 function handleSaveClick(){
     const image = canvas.toDataURL();
     const link = document.createElement("a");
@@ -98,4 +104,8 @@ if(mode){
 
 if(saveBtn){
     saveBtn.addEventListener("click",handleSaveClick);
+}
+
+if(eraseBtn){
+    eraseBtn.addEventListener("click",handleEraseClick);
 }
